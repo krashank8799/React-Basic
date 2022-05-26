@@ -42,7 +42,7 @@ export default function LoginPage(props) {
         console.log(userName)
     }
 
-    function OtpRequest(userName, userEmail) {
+    function OtpRequest(userName, userEmail, userNumber) {
         let details = {
             userName: userName,
             userEmail: userEmail
@@ -54,7 +54,8 @@ export default function LoginPage(props) {
         request.setRequestHeader("Content-type", "application/json");
         request.send(JSON.stringify({
             userName: userName,
-            userEmail: userEmail
+            userEmail: userEmail,
+            mobileNumber : userNumber
         }))
 
         request.addEventListener("load", function() {
@@ -75,7 +76,7 @@ export default function LoginPage(props) {
         setIsLoading(true);
 
         try {
-            await OtpRequest(userName, userEmail);
+            await OtpRequest(userName, userEmail, mobileNumber);
             localStorage.setItem("name", userName);
             setIsOtpRequested(true);
             setIsLoading(false);
