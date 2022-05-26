@@ -59,7 +59,7 @@ function otpMail(email, otp) {
         url,
         function(err) {
             if (err) {
-                res.render("error.ejs", { errorMsg: "Error While sending Otp!" })
+                console.log("Error while sending OTP");
             } else {
                 console.log("OTP sent Successfully");
             }
